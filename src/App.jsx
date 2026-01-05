@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
 import { NotesList } from "./components/NotesList/NotesList";
@@ -8,11 +8,14 @@ import { TagsList } from "./components/TagsList/TagsList";
 
 const LOCAL_STORAGE_KEY = "notes";
 
+const NotesContext = createContext();
+
 /*
  * Main - это отдельный компонент. React позволяет создавать отдельные компоненты в одном файле.
  * Иногда так делают, если не хотят выносить близкий по смыслу компонент в отдельный файл.
  */
-function Main({ notes, setNotes }) {
+function Main() {
+    const { notes, setNotes } = useContext(NotesContext);
     const [searchQuery, setSearchQuery] = useState("");
     const onAddNote = (note) => {
         setNotes([...notes, note]); // Спред оператор.
@@ -56,7 +59,11 @@ function App() {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
     }, [notes]);
 
-    return <Main notes={notes} setNotes={setNotes} />;
+    return (
+        <NotesContext.Provider value={{ notes, setNotes }}>
+            <Main />
+        </NotesContext.Provider>
+    );
 }
 
 export default App;
