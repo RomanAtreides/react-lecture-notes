@@ -9,10 +9,11 @@ import { TagsList } from "./components/TagsList/TagsList";
 const LOCAL_STORAGE_KEY = "notes";
 
 function App() {
-    // Хук, которой позволяет работать с состоянием.
-    // Это JS-функция, которая возвращает кортеж из двух элементов.
-    // Первый элемент - это значение, а второй элемент - это setter для этого значения.
-    // Также первым параметром useState() принимает, какое-то дефолтное значение.
+    /* useState() - это хук, который позволяет работать с состоянием.
+     * Хук - это JS-функция, которая возвращает кортеж из двух элементов.
+     * Первый элемент - это значение, а второй элемент - это setter для этого значения.
+     * Также первым параметром useState() принимает, какое-то дефолтное значение.
+     */
     const [notes, setNotes] = useState(() => {
         const savedNotes = localStorage.getItem(LOCAL_STORAGE_KEY);
         return savedNotes ? JSON.parse(savedNotes) : [];
