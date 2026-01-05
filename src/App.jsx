@@ -36,8 +36,8 @@ function Main() {
                 <Header notesCount={notes.length} />
                 <NotesForm onAddNote={onAddNote} />
                 <Search value={searchQuery} onChange={setSearchQuery} />
-                <TagsList tags={uniqueTags} onTagClick={onTagClick} />
-                <NotesList notes={filteredNotes} setNotes={setNotes} />
+                {Boolean(uniqueTags.length) && <TagsList tags={uniqueTags} onTagClick={onTagClick} />}
+                {Boolean(filteredNotes.length) && <NotesList notes={filteredNotes} setNotes={setNotes} />}
             </div>
         </div>
     );
