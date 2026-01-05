@@ -1,7 +1,7 @@
 import styles from "./Modal.module.css";
 
 export const Modal = ({ isOpen, onClose, children }) => {
-    if (isOpen) {
+    if (!isOpen) {
         return null;
     }
     return (
