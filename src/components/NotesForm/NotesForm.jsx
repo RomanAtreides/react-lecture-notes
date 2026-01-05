@@ -43,7 +43,7 @@ export const NotesForm = function NotesForm({ onAddNote }) {
             {Boolean(error.length) && <span className={styles.error}>{error}</span>}
             <textarea
                 placeholder="Содержание заметки"
-                className={styles.inputField}
+                className={`${styles.inputField} ${styles.textarea}`}
                 value={content}
                 onChange={(event) => {
                     setContent(event.target.value);
