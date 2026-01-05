@@ -51,3 +51,28 @@
     height: 20px;
     fill: var(--color-gray-400);
 }
+
+/* Стили для модального отображения */
+.modalNote {
+    padding: 20px;
+}
+
+.modalTitle {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.modalContent {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    white-space: pre-wrap;
+}
+
+.modalTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
