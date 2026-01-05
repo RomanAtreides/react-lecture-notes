@@ -1,0 +1,8 @@
+.tag {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-xs) var(--spacing-m);
+    border-radius: var(--radius-l);
+    font-size: var(--font-size-s);
+    cursor: pointer;
+}

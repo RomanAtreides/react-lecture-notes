@@ -1,0 +1,60 @@
+.notesForm {
+    background: var(--color-white);
+    padding: var(--spacing-l);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-s);
+    display: grid;
+    gap: var(--spacing-m);
+}
+
+.inputField {
+    padding: var(--spacing-m);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-m);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.inputField:focus {
+    border-color: var(--color-secondary);
+}
+
+.inputField::placeholder {
+    color: var(--color-gray-400);
+}
+
+.inputField[type="text"] {
+    height: 40px;
+}
+
+.inputField[type="textarea"] {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.button {
+    padding: var(--spacing-m) var(--spacing-l);
+    border: none;
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-m);
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.button:active {
+    background-color: #3730a3;
+}
+
+.error {
+    color: var(--color-red);
+    font-size: var(--font-size-s);
+    margin-top: var(--spacing-xs);
+}

@@ -1,0 +1,53 @@
+.note {
+    background: var(--color-white);
+    padding: var(--spacing-l);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-s);
+    display: grid;
+    gap: var(--spacing-m);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.title {
+    font-size: var(--font-size-l);
+    font-weight: 500;
+    color: var(--color-black);
+    margin: 0;
+}
+
+.content {
+    font-size: var(--font-size-m);
+    color: var(--color-black);
+    line-height: var(--line-height-m);
+    white-space: pre-wrap;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.deleteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-s);
+    border-radius: var(--radius-s);
+    transition: background-color 0.2s;
+}
+
+.deleteButton:hover {
+    background-color: var(--color-gray-100);
+}
+
+.deleteButton svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-gray-400);
+}
