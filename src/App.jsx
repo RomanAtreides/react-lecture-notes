@@ -8,26 +8,15 @@ import { TagsList } from "./components/TagsList/TagsList";
 
 const LOCAL_STORAGE_KEY = "notes";
 
-function App() {
-    /* useState() - это хук, который позволяет работать с состоянием.
-     * Хук - это JS-функция, которая возвращает кортеж из двух элементов.
-     * Первый элемент - это значение, а второй элемент - это setter для этого значения.
-     * Также первым параметром useState() принимает, какое-то дефолтное значение.
-     */
-    const [notes, setNotes] = useState(() => {
-        const savedNotes = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return savedNotes ? JSON.parse(savedNotes) : [];
-    });
-
+/*
+ * Main - это отдельный компонент. React позволяет создавать отдельные компоненты в одном файле.
+ * Иногда так делают, если не хотят выносить близкий по смыслу компонент в отдельный файл.
+ */
+function Main({ notes, setNotes }) {
     const [searchQuery, setSearchQuery] = useState("");
-
     const onAddNote = (note) => {
         setNotes([...notes, note]); // Спред оператор.
     };
-
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
-    }, [notes]);
 
     const filteredNotes = notes.filter(
         (note) => note.title.toLowerCase().includes(searchQuery.toLowerCase()) || note.tags.includes(searchQuery)
@@ -49,6 +38,25 @@ function App() {
             </div>
         </div>
     );
+}
+
+function App() {
+    /*
+     * useState() - это хук, который позволяет работать с состоянием.
+     * Хук - это JS-функция, которая возвращает кортеж из двух элементов.
+     * Первый элемент - это значение, а второй элемент - это setter для этого значения.
+     * Также первым параметром useState() принимает, какое-то дефолтное значение.
+     */
+    const [notes, setNotes] = useState(() => {
+        const savedNotes = localStorage.getItem(LOCAL_STORAGE_KEY);
+        return savedNotes ? JSON.parse(savedNotes) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
+    }, [notes]);
+
+    return <Main notes={notes} setNotes={setNotes} />;
 }
 
 export default App;
