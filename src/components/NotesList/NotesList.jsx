@@ -6,6 +6,7 @@ export const NotesList = function ({ notes, setNotes }) {
         <div className={styles.notesList}>
             {notes.map((note) => (
                 <Note
+                    id={note.id}
                     title={note.title}
                     content={note.content}
                     tags={note.tags}
