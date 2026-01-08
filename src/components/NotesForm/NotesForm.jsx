@@ -18,7 +18,7 @@ export const NotesForm = function NotesForm({ onAddNote }) {
             title,
             content,
             tags: tags.length ? tags.split(",") : [],
-            id: Math.random().toString(),
+            id: Math.trunc(Math.random() * 1000000).toString(),
         };
         onAddNote(note);
         setTitle("");
