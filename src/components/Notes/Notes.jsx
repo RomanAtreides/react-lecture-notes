@@ -1,12 +1,12 @@
-import { useCallback, useContext, useMemo, useState } from "react";
-import { NotesContext } from "../../contexts/Note/context";
+import { useCallback, useMemo, useState } from "react";
 import { Search } from "../Search/Search";
 import { TagsList } from "../TagsList/TagsList";
 import { NotesList } from "../NotesList/NotesList";
+import { useStore } from "../../store";
 
 export function Notes() {
     const [searchQuery, setSearchQuery] = useState("");
-    const { notes, setNotes } = useContext(NotesContext);
+    const notes = useStore((store) => store.notes);
 
     const filteredNotes = useMemo(
         () =>
@@ -24,7 +24,7 @@ export function Notes() {
         <>
             <Search value={searchQuery} onChange={setSearchQuery} />
             <TagsList tags={tags} onTagClick={onTagClick} />
-            <NotesList notes={filteredNotes} setNotes={setNotes} />
+            <NotesList notes={filteredNotes} />
         </>
     );
 }
