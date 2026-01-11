@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./NotesForm.module.css";
+import { NoteService } from "../../services/note";
 
 export const NotesForm = function NotesForm({ onAddNote }) {
     const [title, setTitle] = useState("");
@@ -10,7 +11,7 @@ export const NotesForm = function NotesForm({ onAddNote }) {
     const onSubmit = (event) => {
         event.preventDefault();
 
-        if (!title.trim()) {
+        if (!NoteService.verify({ title, content, tags })) {
             setError("Необходимо указать заголовок");
             return;
         }
@@ -18,7 +19,7 @@ export const NotesForm = function NotesForm({ onAddNote }) {
             title,
             content,
             tags: tags.length ? tags.split(",") : [],
-            id: Math.random().toString(),
+            id: Math.trunc(Math.random() * 1000000).toString(),
         };
         onAddNote(note);
         setTitle("");
