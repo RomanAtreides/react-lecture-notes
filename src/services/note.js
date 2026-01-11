@@ -1,13 +1,13 @@
-const STORAGE_KEY = "notes";
+import { NoteApi } from "../api/noteApi";
 
 export const NoteService = {
     setNotes(notes) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+        NoteApi.setNotes(notes);
         return notes;
     },
 
     getNotes() {
-        const newNotes = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        const newNotes = NoteApi.getNotes();
         return newNotes ? newNotes : [];
     },
 
